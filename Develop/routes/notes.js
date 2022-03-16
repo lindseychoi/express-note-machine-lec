@@ -1,6 +1,5 @@
 const notes = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
-const notesRouter = require('./index');
 
 // GET Route for retrieving all the notes
 notes.get('/', (req, res) => {
