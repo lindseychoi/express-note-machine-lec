@@ -1,30 +1,30 @@
-const newNotes = require('express').Router();
+const notes = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const notesRouter = require('./index');
 
-// GET Route for retrieving all the tips
-newNotes.get('/', (req, res) => {
-  readFromFile('./db/tips.json').then((data) => res.json(JSON.parse(data)));
+// GET Route for retrieving all the notes
+notes.get('/', (req, res) => {
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
 });
 
-// POST Route for a new UX/UI tip
-newNotes.post('/', (req, res) => {
+// POST Route for posting a new note
+notes.post('/', (req, res) => {
   console.log(req.body);
 
-  const { username, topic, note } = req.body;
+  const { title, text } = req.body;
 
-  if (req.body) {
-    const newTip = {
-      username,
-      note,
-      topic,
-      note_id,
+  if (title && text) {
+    const newNotes = {
+      title,
+      text,
     };
 
-    readAndAppend(newNotes, './db/tips.json');
-    res.json(`Tip added successfully 🚀`);
+    readAndAppend(newNotes, './db/db.json');
+    res.json(`Note added successfully 🚀`);
+
   } else {
-    res.error('Error in adding tip');
+    res.error('Error in adding note');
   }
 });
 
-module.exports = newNotes;
+module.exports = notes;

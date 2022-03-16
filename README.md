@@ -2,121 +2,131 @@
 note taker that allows user to input note, save note, delete note; hw #11 DU
 # Unit 11: Express.js
 
-## Overview
+## Your Task
 
-In this unit, we'll use Express.js, a widely used Node.js framework, to handle different HTTP methods in an API route. Well-designed routes help us handle responses when a client makes requests to a specific endpoint or URL. Previously, we used the Fetch API on the front end to make GET requests to third-party APIs. During this unit, we expand to using the Fetch API to make POST requests to an API that we create. We'll learn how client-side requests are related to server-side responses. Let's get started!
+Your assignment is to modify starter code to create an application called Note Taker that can be used to write and save notes. This application will use an Express.js back end and will save and retrieve note data from a JSON file.
 
-## Key Topics
+The application’s front end has already been created. It's your job to build the back end, connect the two, and then deploy the entire application to Heroku.
 
-The following topics will be covered in this unit:
 
-* [Server setup and sendFile](https://expressjs.com/en/starter/hello-world.html)
+## User Story
 
-* [API vs. HTML routes](https://expressjs.com/en/guide/routing.html#response-methods)
+```
+AS A small business owner
+I WANT to be able to write and save notes
+SO THAT I can organize my thoughts and keep track of tasks I need to complete
+```
 
-* [req.query and params](https://expressjs.com/en/guide/routing.html#route-parameters)
 
-* [GET with Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+## Acceptance Criteria
 
-* [Middleware for static assets](http://expressjs.com/en/starter/static-files.html)
+```
+GIVEN a note-taking application
+WHEN I open the Note Taker
+THEN I am presented with a landing page with a link to a notes page
+WHEN I click on the link to the notes page
+THEN I am presented with a page with existing notes listed in the left-hand column, plus empty fields to enter a new note title and the note’s text in the right-hand column
+WHEN I enter a new note title and the note’s text
+THEN a Save icon appears in the navigation at the top of the page
+WHEN I click on the Save icon
+THEN the new note I have entered is saved and appears in the left-hand column with the other existing notes
+WHEN I click on an existing note in the list in the left-hand column
+THEN that note appears in the right-hand column
+WHEN I click on the Write icon in the navigation at the top of the page
+THEN I am presented with empty fields to enter a new note title and the note’s text in the right-hand column
+```
 
-* [Insomnia](https://support.insomnia.rest/article/11-getting-started)
 
-* [POST requests and routes](https://expressjs.com/en/starter/basic-routing.html)
+## Mock-Up
 
-* [Middleware for body parsing](http://expressjs.com/en/api.html#req.body)
+The following images show the web application's appearance and functionality:
 
-* [POST with Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch)
+![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./Assets/11-express-homework-demo-01.png)
 
-* [Data persistence using JSON](https://nodejs.org/api/fs.html#fs_file_system)
+![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.](./Assets/11-express-homework-demo-02.png)
 
-* [Modular routing](http://expressjs.com/en/guide/routing.html#express-router)
 
-* [Custom middleware](https://expressjs.com/en/guide/writing-middleware.html)
+## Getting Started
 
-* [Heroku deployment](https://devcenter.heroku.com/articles/getting-started-with-nodejs?singlepage=true)
+On the back end, the application should include a `db.json` file that will be used to store and retrieve notes using the `fs` module.
 
-## Learning Objectives
+The following HTML routes should be created:
 
-You will be employer-ready if you are able to:
+* `GET /notes` should return the `notes.html` file.
 
-* Configure an Express.js app to handle GET and POST requests.
+* `GET *` should return the `index.html` file.
 
-* Configure an Express.js app to serve static files.
+The following API routes should be created:
 
-* Identify how client-side requests relate to server-side responses.
+* `GET /api/notes` should read the `db.json` file and return all saved notes as JSON.
 
-* Parse optional and required parameters when creating server-side routes.
+* `POST /api/notes` should receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client. You'll need to find a way to give each note a unique id when it's saved (look into npm packages that could do this for you).
 
-* Implement client-side POST requests to submit form data to a server.
 
-* Implement separation of concerns for routing.
+## Bonus
 
-## Technical Interview Preparation
+You haven’t learned how to handle DELETE requests, but this application offers that functionality on the front end. As a bonus, try to add the DELETE route to the application using the following guideline:
 
-You will be employer-competitive if you are able to solve the following algorithms and successfully complete the assessments.
+* `DELETE /api/notes/:id` should receive a query parameter that contains the id of a note to delete. To delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 
-### Algorithms
 
-Practicing algorithm-based interview questions is one of the best ways to prepare for interviews. Watch the `📹 Let's Code` video(s) for tips and tricks on how to solve the algorithm.
+## Grading Requirements
 
-* [01: Most Songs In Playlist](./03-Algorithms/01-most-songs-in-playlist)
+This homework is graded based on the following criteria: 
 
-* [02: Is Perfect Square](./03-Algorithms/02-is-perfect-square)
 
-* [03: Array Search 2D](./03-Algorithms/03-array-search-2d)
+### Technical Acceptance Criteria: 40%
 
-  * 📹 [Let's Code: Array Search 2D!](https://2u-20.wistia.com/medias/qbtymlf1fx)
+* Satisfies all of the preceding acceptance criteria plus the following:
 
-### Assessments
+  * Application front end must connect to an Express.js back end.
 
-Assess your knowledge by answering technical interview questions and solving coding challenges.
+  * Application back end must store notes that have a unique id in a JSON file.
 
-* [Unit 11 Assessment](https://forms.gle/kR8SDXkDcTbPgJnQ8)
+  * Application must be deployed to Heroku.
 
-## Homework
 
-For this week's homework, you'll create an application using Express.js and persistent storage that will allow users to take notes via a web interface. You'll create POST and GET routes to add and retrieve notes from persistent storage. The application will feature a sleek interface and demonstrate your knowledge of Express.js and routing. You'll also deploy the Note Taker application to Heroku using the Heroku CLI.
+### Deployment: 36%
 
-## Career Connection
+* Application deployed at live URL.
 
-Career services material for this unit is located in the [Career Connection folder](./04-Career-Connection/README.md). For more information about career services, including coding milestones, demo days, technical toolkits, workshops, and additional resources, visit the [career services website](https://careernetwork.2u.com/?utm_medium=Academics&utm_source=boot_camp/).
+* Application loads with no errors.
 
-## Heads-Up
+* Application GitHub URL submitted.
 
-In the next unit you'll build your own database to store and retrieve data using SQL. To prepare for next week's class, make sure that you've installed MySQL. For more information, refer to the [Full-Stack Blog on MySQL installation](https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide).
+* GitHub repository contains application code.
 
-## Resources
 
-Here are some additional resources to help solidify the topics covered in this unit.
+### Application Quality: 11%
 
-### Git Guide
+* Application console is free of errors.
 
-Refer to the Git Guide to review the Git concept for this unit. Watch the `📹 Git Guide` video for an additional walkthrough of the Git concept.
 
-* 📖 [Git Guide: Git History](./01-Activities/27-Evr_Git-History)
+### Repository Quality: 13%
 
-* 📹 [Git Guide Video: Git History](https://2u-20.wistia.com/medias/487ikj98bv)
+* Repository has a unique name.
 
-### Full-Stack Blog Posts
+* Repository follows best practices for file structure and naming conventions.
 
-Check out the [Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/) for additional resources, like walkthroughs, articles, and installation guides.
+* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
 
-* 📖 [How to Install the Heroku CLI](https://coding-boot-camp.github.io/full-stack/heroku/how-to-install-the-heroku-cli)
+* Repository contains multiple descriptive commit messages.
 
-* 📖 [Heroku Deployment Guide](https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide)
+* Repository contains quality README file with description, screenshot, and link to deployed application.
 
-* 📖 [MySQL Installation Guide](https://coding-boot-camp.github.io/full-stack/mysql/mysql-installation-guide)
 
-### General
+### Bonus: +10 Points
 
-Refer to these resources for additional information about topics covered in this unit.
+* Application allows users to delete notes.
 
-* 📖 [Heroku documentation on installing the Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
 
-* 📖 [Insomnia documentation on installation](https://support.insomnia.rest/article/156-installation)
-  
-* 📖 [Express.js documentation on express()](https://expressjs.com/en/4x/api.html)
+## Review
 
----
+You are required to submit BOTH of the following for review:
+
+* The URL of the functional, deployed application.
+
+* The URL of the GitHub repository, with a unique name and a README describing the project.
+
+- - -
 © 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
