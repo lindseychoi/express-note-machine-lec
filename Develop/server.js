@@ -1,20 +1,13 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const api = require('./routes/notes.js');
-
-
+const api = require('./routes/index.js');
 const PORT = 3001;
 
-
-
-
 //middleware
-// app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-// app.use('/', api);
-// app.use('/notes', notesRouter);
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', api);
 app.use(express.static('public'));
 
 //GET Route for homepage
