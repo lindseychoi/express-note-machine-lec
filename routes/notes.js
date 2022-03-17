@@ -26,4 +26,7 @@ notes.post('/', (req, res) => {
   }
 });
 
+notes.delete('/notes', (req, res) => {
+  res.send('Got a delete request at NOTES');
+})
 module.exports = notes;

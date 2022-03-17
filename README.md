@@ -6,6 +6,9 @@ note taker that allows user to input note, save note, delete note; hw #11 DU
 [![License](https://img.shields.io/badge/License-Unlicense-blue.svg)](https://opensource.org/licenses/Unlicense)
 ## This project allows the user to add notes to an html page. Heroku deployed page link: https://make-a-list-of-notes-lec.herokuapp.com/
 
+### _Screenshot_
+[![Screenshot](./notetaker1.jpg)
+
 ### _Table of Contents_ 
 * [Installation](#installation) 
 * [Usage](#usage) 
